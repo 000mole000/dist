@@ -4,7 +4,7 @@ var path = require('path')
 var serveStatic = require('serve-static')
 app = express()
 // app.use(serveStatic(__dirname))
-expressVue.use(app, expressVueOptions).then(() => {
+expressVue.use(app).then(() => {
     app.get('/bsiua523hntv2.txt',function(req,res) {
         res.send('')
     })
