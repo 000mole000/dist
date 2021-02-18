@@ -6,6 +6,9 @@ app.use(serveStatic(__dirname))
 app.get('/bsiua523hntv2.txt',function(req,res) {
     res.send('')
 })
+app.get('/google5b2bbde1d25ed754.html',function(req,res) {
+    res.sendFile(__dirname + '/google5b2bbde1d25ed754.html');
+})
 app.get('*', (req, res) => {
 res.sendFile(__dirname + '/index.html');
 });
