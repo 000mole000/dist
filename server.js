@@ -22,9 +22,9 @@ const sitemapMiddleware = () => {
   };
 };
 
-app.get('/sitemap.xml', sitemapMiddleware());
-
 app = express()
+
+app.get('/sitemap.xml', sitemapMiddleware());
 app.use(serveStatic(__dirname))
 app.use(set)
 app.get('/bsiua523hntv2.txt',function(req,res) {
