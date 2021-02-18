@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/000mole000/dist#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "vue-router-sitemap": "0.0.4"
   }
 }
