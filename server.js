@@ -1,9 +1,9 @@
 var express = require('express')
 var path = require('path')
-var serveStatic = require('serve-static')
+var serveStatic = require('serve-static')git
 var VueRouterSitemap=require('vue-router-sitemap');
 
-export const sitemapMiddleware = () => {
+const sitemapMiddleware = () => {
   return (req, res) => {
     res.set('Content-Type', 'application/xml');
 
