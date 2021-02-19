@@ -1,0 +1,1 @@
+.film{display:flex;flex-direction:column;align-items:center}.film__video{width:50vw;height:28vw}@media (max-width:600px){.film__video{width:100vw;height:56vw}}
