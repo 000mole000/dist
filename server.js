@@ -27,6 +27,8 @@ app = express()
 // app.get('/sitemap.xml', sitemapMiddleware());
 app.use(serveStatic(__dirname))
 app.get('/sitemap.xml',function(req,res) {
+
+    res.set('Content-Type', 'text/xml');
     res.sendFile(__dirname + '/sitemap.xml');
 })
 app.get('/sitemap2.xml',function(req,res) {
