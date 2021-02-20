@@ -32,6 +32,8 @@ app.get('/sitemap.xml',function(req,res) {
     res.sendFile(__dirname + '/sitemap.xml');
 })
 app.get('/sitemap2.xml',function(req,res) {
+
+    res.set('Content-Type', 'text/xml');
     res.sendFile(__dirname + '/sitemap2.xml');
 })
 app.get('/bsiua523hntv2.txt',function(req,res) {
