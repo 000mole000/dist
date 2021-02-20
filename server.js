@@ -3,34 +3,37 @@ var path = require('path')
 var serveStatic = require('serve-static')
 var VueRouterSitemap=require('vue-router-sitemap');
 
-const sitemapMiddleware = () => {
-  return (req, res) => {
-    res.set('Content-Type', 'application/xml');
+// const sitemapMiddleware = () => {
+//   return (req, res) => {
+//     res.set('Content-Type', 'application/xml');
 
-    const staticSitemap = path.resolve('', 'sitemap.xml');
-    const filterConfig = {
-      isValid: false,
-      rules: [
-        /\/example-page/,
-        /\*/,
-      ],
-    };
+//     const staticSitemap = path.resolve('', 'sitemap.xml');
+//     const filterConfig = {
+//       isValid: false,
+//       rules: [
+//         /\/example-page/,
+//         /\*/,
+//       ],
+//     };
 
-    new VueRouterSitemap(router).filterPaths(filterConfig).build('https://minefile.herokuapp.com').save(staticSitemap);
+//     new VueRouterSitemap(router).filterPaths(filterConfig).build('https://minefile.herokuapp.com').save(staticSitemap);
 
-    return res.sendFile(staticSitemap);
-  };
-};
+//     return res.sendFile(staticSitemap);
+//   };
+// };
 
 app = express()
 
-app.get('/sitemap.xml', sitemapMiddleware());
+// app.get('/sitemap.xml', sitemapMiddleware());
 app.use(serveStatic(__dirname))
 app.get('/bsiua523hntv2.txt',function(req,res) {
     res.send('')
 })
 app.get('/google5b2bbde1d25ed754.html',function(req,res) {
     res.sendFile(__dirname + '/google5b2bbde1d25ed754.html');
+})
+app.get('/gen',function(req,res) {
+    res.sendFile(__dirname + '/generate.html');
 })
 app.get('*', (req, res) => {
 res.sendFile(__dirname + '/index.html');
