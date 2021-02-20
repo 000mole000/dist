@@ -31,11 +31,11 @@
  }
  let end =false
  let filmsId = []
- let urlApi = 'https://videocdn.tv/api/movies?api_token=CMteVkivIq7oQPOpZtrpGIB7esvY2juc'
+ let page = 1
 while (end===false) {
-  let res = await fetch(urlApi);
+  let res = await fetch('https://videocdn.tv/api/movies?api_token=CMteVkivIq7oQPOpZtrpGIB7esvY2juc&page='+page);
   let films = await res.json()
-  urlApi=films.next_page_url
+  page++
     console.log('films', filmsId)
   for (var i=0; i < films.data.length; i++) {
     filmsId.push(films.data[i].imdb_id)
