@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        async function createSitemap() {
+  var doc = document.implementation.createDocument('', '', null);
+
+  //create the outer tag
+  var urlset = doc.createElement("urlset");
+  urlset.setAttribute("xmlns"," http://www.sitemaps.org/schemas/sitemap/0.9");
+
+  var url = ''; var changefreq = ''; var loc = '';
+                       
+ //first create static sites (note, that this is a selection)
+ var staticSites = ['', 'about'];
+ for (var i=0; i < staticSites.length; i++) {
+    url = doc.createElement("url");
+    loc = doc.createElement('loc');
+    loc.innerHTML = 'https://minefile.herokuapp.com/' + staticSites[i];
+    changefreq = doc.createElement("changefreq");
+    changefreq.innerHTML = 'monthly';
+    url.appendChild(loc);
+    url.appendChild(changefreq);
+    urlset.appendChild(url);
+ }
+ let end =false
+ let filmsId = []
+ let urlApi = 'https://videocdn.tv/api/movies?api_token=CMteVkivIq7oQPOpZtrpGIB7esvY2juc'
+while (end===false) {
+  let res = await fetch(urlApi);
+  let films = await res.json()
+  urlApi=films.next_page_url
+    console.log('films', filmsId)
+  for (var i=0; i < films.data.length; i++) {
+    filmsId.push(films.data[i].imdb_id)
+  }
+  if(!films.next_page_url) {
+    end=true
+    console.log('films111', filmsId)
+for (var i=0; i < filmsId.length; i++) {
+      url = doc.createElement("url");
+      loc = doc.createElement('loc');
+      loc.innerHTML = 'https://minefile.herokuapp.com/film/' + filmsId[i];
+      changefreq = doc.createElement("changefreq");
+      changefreq.innerHTML = 'weekly';
+      url.appendChild(loc);
+      url.appendChild(changefreq);
+      urlset.appendChild(url);
+  }  
+  }
+}
+ //Let's add the dynamic data here
+          
+ doc.appendChild(urlset);
+ var oSerializer = new XMLSerializer();
+var xmltext = oSerializer.serializeToString(doc);
+xmltext = '<?xml version="1.0" encoding="UTF-8"?>' + xmltext;
+
+//download the file
+var pom = document.createElement('a');
+var filename = "sitemap.xml";
+var pom = document.createElement('a');
+var bb = new Blob([xmltext], {type: 'text/plain'});
+pom.setAttribute('href', window.URL.createObjectURL(bb));
+pom.setAttribute('download', filename);
+pom.dataset.downloadurl = ['text/plain', pom.download, pom.href].join(':');
+pom.draggable = true; 
+pom.classList.add('dragout');
+pom.click();
+}
+createSitemap()
+    </script>
+</body>
+</html>
