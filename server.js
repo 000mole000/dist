@@ -26,6 +26,9 @@ app = express()
 
 // app.get('/sitemap.xml', sitemapMiddleware());
 app.use(serveStatic(__dirname))
+app.get('/sitemap.xml',function(req,res) {
+    res.sendFile(__dirname + '/sitemap.xml');
+})
 app.get('/bsiua523hntv2.txt',function(req,res) {
     res.send('')
 })
