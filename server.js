@@ -45,6 +45,9 @@ app.get('/bsiua523hntv2.txt',function(req,res) {
 app.get('/google5b2bbde1d25ed754.html',function(req,res) {
     res.sendFile(__dirname + '/google5b2bbde1d25ed754.html');
 })
+app.get('/yandex_1fbe6abeeec876cb.html',function(req,res) {
+    res.sendFile(__dirname + '/yandex_1fbe6abeeec876cb.html');
+})
 app.get('/gen',function(req,res) {
     res.sendFile(__dirname + '/generate.html');
 })
